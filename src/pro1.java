@@ -94,8 +94,12 @@ public class pro1 {
                     }
                     now.scope.put(newname.name,newname);
                 }
+
                 if (item.type.equals("self_function")){
                     //Nothing to do
+                    if (!item.name.equals(now.name)){
+                        throw new Exception("self_function_name2");
+                    }
                 }
             }
         }
@@ -166,6 +170,9 @@ public class pro1 {
             }
             varname newname = new varname();
             newname.name = now.son.get(1).name;
+            if (newname.name.equals("this")){
+                throw new  Exception("invalid variable name 5");
+            }
             node nowtype = now.son.get(0);
             int arrdim=0;
             while (nowtype.name.equals("array")){
@@ -1026,8 +1033,8 @@ public class pro1 {
                     &&root1.scope.get("main").location.output_variable_type.equals("int"))){
                 throw new Exception("main not good");
             }
-        }
-        catch(Throwable eee){
+        }catch(Throwable eee)
+        {
             //throw new Exception("Well");
             //System.err.println("CE");
             //throw eee;
