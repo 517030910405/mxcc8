@@ -1022,8 +1022,12 @@ public class pro1 {
             if (!root1.scope.get("main").type.equals("function")){
                 throw new Exception("No Main");
             }
-        }catch(Throwable eee)
-        {
+            if (!(root1.scope.get("main").location.output_variable_array_dim==0
+                    &&root1.scope.get("main").location.output_variable_type.equals("int"))){
+                throw new Exception("main not good");
+            }
+        }
+        catch(Throwable eee){
             //throw new Exception("Well");
             //System.err.println("CE");
             //throw eee;
